@@ -8,7 +8,7 @@ use App\Http\Controllers\PostController;
 
 Route::view('/','welcome');
 
-Route::get('post',[PostController::class,'index'])->middleware(['auth', 'verified'])->name('post_index');
+Route::get('post',[PostController::class,'index'])->middleware(['can:isAdmin, App\Models\Post'])->middleware(['auth', 'verified'])->name('post_index');
 
 Route::post('post',[PostController::class,'create'])->middleware(['auth', 'verified'])->name('create_post');
 
