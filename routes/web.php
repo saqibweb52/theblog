@@ -12,7 +12,7 @@ Route::get('post',[PostController::class,'index'])->middleware(['can:isAdmin, Ap
 
 Route::post('post',[PostController::class,'create'])->middleware(['auth', 'verified'])->name('create_post');
 
-Route::get('/dashboard',[PostController::class,'show_post'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard',[PostController::class,'show'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('editpost/{id}',[PostController::class,'edit'])->middleware(['can:isAdmin, App\Models\Post'])->middleware(['auth', 'verified']);
 

@@ -57,9 +57,12 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+        $posts = Post::all();
+   
+      
+        return view('dashboard',['posts'=>$posts]);
     }
 
     /**
@@ -113,11 +116,4 @@ class PostController extends Controller
      return redirect(Route('dashboard'))->with('posted','Post Deleted');
     }
 
-    public function show_post(){
-     
-        $posts = Post::all();
-      
-        return view('dashboard',['posts'=>$posts]);
-
-    }
 }
