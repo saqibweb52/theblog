@@ -24,7 +24,7 @@ class PostController extends Controller
      */
     public function create(Request $request)
     {
-
+        $this->authorize('isAdmin', Post::class);
        
     
         $user = $request->user();
@@ -70,7 +70,7 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        
+        $this->authorize('isAdmin', Post::class);
 
         $post = Post::find($id);
      
@@ -87,6 +87,7 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->authorize('isAdmin', Post::class);
         $post = Post::find($id);
 
         $post->title = $request->title;
@@ -106,6 +107,8 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
+
+        $this->authorize('isAdmin', Post::class);
      Post::destroy($id);
      return redirect(Route('dashboard'))->with('posted','Post Deleted');
     }
